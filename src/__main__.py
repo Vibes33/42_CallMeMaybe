@@ -14,10 +14,10 @@ def load_json(filepath: str) -> Any:
         with open(filepath, 'r', encoding='utf-8') as f:
             return json.load(f)
     except FileNotFoundError:
-        print(f"Erreur : Le fichier {filepath} est introuvable.", file=sys.stderr)
+        print(f"Erreur : {filepath} est introuvable.", file=sys.stderr)
         sys.exit(1)
     except json.JSONDecodeError:
-        print(f"Erreur : Le fichier {filepath} n'est pas un JSON valide.", file=sys.stderr)
+        print(f"Erreur : {filepath} n'est pas un JSON valide.", file=sys.stderr)
         sys.exit(1)
 
 def main() -> None:
