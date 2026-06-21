@@ -40,7 +40,6 @@ def main() -> None:
         model = Small_LLM_Model()
         decoder = ConstrainedDecoder(model, [f.model_dump() for f in functions])
     except KeyboardInterrupt:
-        # ICI ON QUITTE ! Le modèle n'est pas chargé, on n'a rien à sauvegarder.
         print("\nInterruption pendant le chargement du modèle", file=sys.stderr)
         sys.exit(130)
     except Exception as e:
@@ -70,8 +69,6 @@ def main() -> None:
                 print(f"Echec de validation Pydantic pour ce prompt : {e}", file=sys.stderr)
 
     except KeyboardInterrupt:
-        # ICI ON NE QUITTE PAS ! On affiche juste un message.
-        # Le code va naturellement continuer et exécuter la sauvegarde en bas.
         print("\nInterruption par l'utilisateur (Ctrl+C). Arrêt de la génération.", file=sys.stderr)
         print("sauvegarde des résultats partiels générés...", file=sys.stderr)
 
@@ -90,11 +87,9 @@ def main() -> None:
         print(f"Erreur lors de l'écriture du fichier de résultats : {e}", file=sys.stderr)
         sys.exit(1)
 
-# LE FILET DE SÉCURITÉ GLOBAL
 if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        # Si on fait Ctrl+C ultra-rapidement pendant un import par exemple
         print("\n\nArrêt", file=sys.stderr)
         sys.exit(130)
