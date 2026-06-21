@@ -61,20 +61,20 @@ def main() -> None:
                 result = FunctionCallResult(**parsed_json)
 
                 results.append(result.model_dump())
-                print("JSON Valide et conforme au schéma.")
+                print("JSON Valide et conforme au schéma")
 
             except json.JSONDecodeError:
-                print("Echec : Le LLM n'a pas généré un JSON valide à parser.", file=sys.stderr)
+                print("Echec : Le LLM n'a pas généré un JSON valide à parser", file=sys.stderr)
             except Exception as e:
                 print(f"Echec de validation Pydantic pour ce prompt : {e}", file=sys.stderr)
 
     except KeyboardInterrupt:
         print("\nInterruption par l'utilisateur (Ctrl+C). Arrêt de la génération.", file=sys.stderr)
-        print("sauvegarde des résultats partiels générés...", file=sys.stderr)
+        print("sauvegarde des résultats partiels générés", file=sys.stderr)
 
     except Exception as e:
         print(f"erreur inattendue est survenue pendant la génération : {e}", file=sys.stderr)
-        print("Sauvegarde des résultats partiels...", file=sys.stderr)
+        print("Sauvegarde des résultats partiels", file=sys.stderr)
 
     output_path = Path(args.output)
     output_path.parent.mkdir(parents=True, exist_ok=True)
