@@ -10,7 +10,6 @@ from llm_sdk import Small_LLM_Model
 
 
 def load_json(filepath: str) -> Any:
-    print("ouais c'est greg")
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
             return json.load(f)
@@ -34,7 +33,6 @@ def main() -> None:
 
     args = parser.parse_args()
 
-    print("ouais c'est greg")
     raw_functions = load_json(args.functions_definition)
     functions = [FunctionDefinition(**f) for f in raw_functions]
 
